@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WatchsClub | Luxury Timepieces</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0a0a0a;
+            --secondary: #1a1a1a;
+            --accent: #d4af37;
+            --accent-dark: #b8860b;
+            --text: #f5f5f5;
+            --text-secondary: #b0b0b0;
+            --success: #4CAF50;
+            --danger: #f44336;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background-color: var(--primary);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: rgba(10, 10, 10, 0.95);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: var(--accent);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 5px 0;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .header-icons {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-icons div {
+            margin-left: 20px;
+            cursor: pointer;
+            position: relative;
+            font-size: 20px;
+            transition: var(--transition);
+        }
+
+        .header-icons div:hover {
+            color: var(--accent);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--accent);
+            color: var(--primary);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 90vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1523170335258-f5ed11844a49?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            padding: 0 40px;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: var(--text-secondary);
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--primary);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background: var(--accent-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            margin-left: 15px;
+        }
+
+        .btn-outline:hover {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        /* Categories Section */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: var(--accent);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .category-card {
+            background: var(--secondary);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .category-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .category-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .category-content h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .category-content p {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        /* Featured Products */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--secondary);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--accent);
+            color: var(--primary);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            z-index: 1;
+        }
+
+        .product-img {
+            height: 220px;
+            width: 100%;
+            object-fit: cover;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .product-content {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+            height: 50px;
+            overflow: hidden;
+        }
+
+        .product-price {
+            font-size: 22px;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .product-actions button {
+            flex: 1;
+            margin: 0 5px;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--secondary);
+            padding: 80px 0;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-img {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-text h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info {
+            padding-right: 30px;
+        }
+
+        .contact-info h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-detail i {
+            font-size: 24px;
+            color: var(--accent);
+            margin-right: 15px;
+            width: 40px;
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background: var(--secondary);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            color: var(--text);
+            font-size: 16px;
+        }
+
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background: #080808;
+            padding: 60px 0 30px;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background: var(--accent);
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: var(--secondary);
+            border-radius: 50%;
+            margin-right: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+        }
+
+        /* Cart Sidebar */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 380px;
+            height: 100vh;
+            background: var(--secondary);
+            z-index: 2000;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .cart-sidebar.active {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .close-cart {
+            font-size: 24px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-cart:hover {
+            color: var(--accent);
+        }
+
+        .cart-items {
+            margin-bottom: 30px;
+        }
+
+        .cart-item {
+            display: flex;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cart-item-img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-right: 15px;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-price {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .cart-item-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            background: var(--primary);
+            border: none;
+            color: var(--text);
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .quantity-input {
+            width: 40px;
+            height: 30px;
+            text-align: center;
+            background: var(--primary);
+            border: none;
+            color: var(--text);
+            margin: 0 5px;
+        }
+
+        .remove-item {
+            margin-left: 15px;
+            color: var(--danger);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .remove-item:hover {
+            color: #ff6b6b;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 18px;
+            font-weight: 600;
+            padding: 15px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--success);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 4px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 3000;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .notification.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Flying Cars Animation */
+        .flying-cars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .flying-car {
+            position: absolute;
+            font-size: 40px;
+            opacity: 0.7;
+            animation: fly linear infinite;
+        }
+
+        @keyframes fly {
+            0% {
+                transform: translateX(-100px) translateY(0);
+            }
+            100% {
+                transform: translateX(calc(100vw + 100px)) translateY(calc((var(--y) * 100px) - 50px));
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-img {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 48px;
+            }
+            
+            .header-container {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin: 20px 0;
+            }
+            
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .products {
+                grid-template-columns: 1fr;
+            }
+            
+            .product-actions {
+                flex-direction: column;
+            }
+            
+            .product-actions button {
+                width: 100%;
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-crown"></i>
+                WatchsClub
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#categories">Categories</a></li>
+                <li><a href="#featured">Featured</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            
+            <div class="header-icons">
+                <div class="search">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="user">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="cart" id="cart-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="flying-cars">
+            <!-- Flying cars will be added dynamically -->
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>Elegance on Your Wrist</h1>
+                <p>Discover our exclusive collection of luxury timepieces. Crafted with precision and designed for those who appreciate timeless elegance.</p>
+                <div class="hero-btns">
+                    <a href="#categories" class="btn">Shop Collection</a>
+                    <a href="#featured" class="btn btn-outline">New Arrivals</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Categories Section -->
+    <section class="section" id="categories">
+        <div class="container">
+            <div class="section-title">
+                <h2>Watch Categories</h2>
+            </div>
+            
+            <div class="categories">
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Luxury Watches" class="category-img">
+                    <div class="category-content">
+                        <h3>Luxury Watches</h3>
+                        <p>Exquisite timepieces for the discerning collector</p>
+                        <a href="#" class="btn btn-outline">Explore</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Sports Watches" class="category-img">
+                    <div class="category-content">
+                        <h3>Sports Watches</h3>
+                        <p>Durable and functional for the active lifestyle</p>
+                        <a href="#" class="btn btn-outline">Explore</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1539874754764-5a96559165b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Smart Watches" class="category-img">
+                    <div class="category-content">
+                        <h3>Smart Watches</h3>
+                        <p>Technology meets style on your wrist</p>
+                        <a href="#" class="btn btn-outline">Explore</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1585123334904-845d60e97b29?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Classic Watches" class="category-img">
+                    <div class="category-content">
+                        <h3>Classic Watches</h3>
+                        <p>Timeless designs that never go out of style</p>
+                        <a href="#" class="btn btn-outline">Explore</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Featured Products -->
+    <section class="section" id="featured">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Watches</h2>
+            </div>
+            
+            <div class="products">
+                <!-- Products will be added dynamically -->
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Our Story</h2>
+                    <p>Founded in 2005, WatchsClub has established itself as a premier destination for luxury timepieces. Our passion for horology drives us to curate the finest collections from around the world.</p>
+                    <p>Each watch in our collection is meticulously selected for its craftsmanship, design, and heritage. We believe that a watch is more than just a timekeeping device—it's a statement of personal style and a legacy to be passed down through generations.</p>
+                    <p>Our expert team provides unparalleled service, ensuring that every customer finds the perfect timepiece to suit their individual taste and lifestyle.</p>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1551817958-d9d86fb29431?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="WatchsClub Boutique">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <div class="contact-detail">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Our Boutique</h4>
+                            <p>123 Luxury Avenue, New York, NY 10001</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <h4>Call Us</h4>
+                            <p>+1 (212) 555-0123</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email Us</h4>
+                            <p>info@watchsclub.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Opening Hours</h4>
+                            <p>Monday - Saturday: 10AM - 8PM</p>
+                            <p>Sunday: 12PM - 6PM</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Send a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Subject">
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h4>WatchsClub</h4>
+                    <p>Your premier destination for luxury timepieces. Discover timeless elegance with our curated collection of the world's finest watches.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Shop</h4>
+                    <ul>
+                        <li><a href="#">All Watches</a></li>
+                        <li><a href="#">New Arrivals</a></li>
+                        <li><a href="#">Best Sellers</a></li>
+                        <li><a href="#">Special Offers</a></li>
+                        <li><a href="#">Coming Soon</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Information</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe to our newsletter for the latest updates and exclusive offers.</p>
+                    <form>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <button type="submit" class="btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 WatchsClub. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <div class="close-cart" id="close-cart">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        
+        <div class="cart-items" id="cart-items">
+            <!-- Cart items will be added dynamically -->
+        </div>
+        
+        <div class="cart-total">
+            <span>Total:</span>
+            <span id="cart-total-price">$0.00</span>
+        </div>
+        
+        <a href="#" class="btn checkout-btn">Proceed to Checkout</a>
+    </div>
+    
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i> Item added to cart!
+    </div>
+    
+    <script>
+        // Product data (simulating 100+ items across categories)
+        const products = [
+            // Luxury Watches (20 items)
+            {id: 1, name: "Royal Elite Gold Chronograph", price: 4599.99, category: "luxury", image: "https://images.unsplash.com/photo-1611599537845-1c7a0091a6ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"},
+            {id: 2, name: "Platinum Heritage Automatic", price: 6899.99, category: "luxury", image: "https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"},
+            {id: 3, name: "Diamond Encrusted Masterpiece", price: 12500.00, category: "luxury", image: "https://images.unsplash.com/photo-1539874754764-5a96559165b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"},
+            {id: 4, name: "Executive Titanium Limited Edition", price: 3499.99, category: "luxury", image: "https://images.unsplash.com/photo-1585123334904-845d60e97b29?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"},
+            {id: 5, name: "Grand Tourbillon Skeleton", price: 8999.99, category: "luxury", image: "https://images.unsplash.com/photo-1612817159949-195b6eb9e31a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"},
+            
+            // Sports Watches (20 items)
+            {id: 21, name: "Pro Diver 1000M", price: 899.99, category: "sports", image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"},
+            {id: 22, name: "Extreme Chronograph GMT", price: 749.99, category: "sports", image: "https://images.unsplash.com/photo-1508057198894-247b23fe5ade?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"},
+            {id: 23, name: "Tactical Field Explorer", price: 599.99, category: "sports", image: "https://images.unsplash.com/photo-1539874754764-5a96559165b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"},
+            {id: 24, name: "Solar Powered Adventure Pro", price: 429.99, category: "sports", image: "https://images.unsplash.com/photo-1585123334904-845d60e97b29?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"},
+            {id: 25, name: "Carbon Fiber Racing Chrono", price: 1299.99, category: "sports", image: "https://images.unsplash.com/photo-1612817159949-195b6eb9e31a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"},
+            
+            // Smart Watches (20 items)
+            {id: 41, name: "Ultimate Health Tracker Pro", price: 399.99, category: "smart", image: "https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"},
+            {id: 42, name: "Business Edition Smart Hybrid", price: 549.99, category: "smart", image: "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"},
+            {id: 43, name: "Fitness Pro Max", price: 299.99, category: "smart", image: "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"},
+            {id: 44, name: "Luxury Smart Hybrid Gold", price: 899.99, category: "smart", image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"},
+            {id: 45, name: "Solar Powered Smart Watch", price: 349.99, category: "smart", image: "https://images.unsplash.com/photo-1508057198894-247b23fe5ade?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"},
+            
+            // Classic Watches (20 items)
+            {id: 61, name: "Vintage Leather Strap", price: 799.99, category: "classic", image: "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"},
+            {id: 62, name: "Heritage Rose Gold", price: 1299.99, category: "classic", image: "https://images.unsplash.com/photo-1611599537845-1c7a0091a6ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"},
+            {id: 63, name: "Minimalist Silver Edition", price: 599.99, category: "classic", image: "https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"},
+            {id: 64, name: "Art Deco Platinum", price: 3499.99, category: "classic", image: "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"},
+            {id: 65, name: "Grandfather's Legacy", price: 1999.99, category: "classic", image: "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"},
+        ];
+        
+        // Simulate 100 items per category by duplicating existing ones
+        function generateProducts() {
+            const generatedProducts = [];
+            const categories = ['luxury', 'sports', 'smart', 'classic'];
+            
+            categories.forEach(category => {
+                const categoryProducts = products.filter(p => p.category === category);
+                
+                for (let i = 0; i < 20; i++) {
+                    categoryProducts.forEach((product, index) => {
+                        const newProduct = {...product};
+                        newProduct.id = (category === 'luxury' ? 0 : 
+                                         category === 'sports' ? 20 : 
+                                         category === 'smart' ? 40 : 60) + 
+                                         (i * 5) + index + 1;
+                        generatedProducts.push(newProduct);
+                    });
+                }
+            });
+            
+            return generatedProducts;
+        }
+        
+        const allProducts = generateProducts();
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        // DOM Elements
+        const productsContainer = document.querySelector('.products');
+        const cartIcon = document.getElementById('cart-icon');
+        const cartSidebar = document.getElementById('cart-sidebar');
+        const closeCart = document.getElementById('close-cart');
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartTotalPrice = document.getElementById('cart-total-price');
+        const cartCount = document.querySelector('.cart-count');
+        const notification = document.getElementById('notification');
+        const flyingCars = document.querySelector('.flying-cars');
+        
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+            updateCartUI();
+            createFlyingCars();
+        });
+        
+        // Render products to the page
+        function renderProducts() {
+            // Display 12 featured products
+            const featuredProducts = allProducts.slice(0, 12);
+            
+            productsContainer.innerHTML = '';
+            
+            featuredProducts.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <div class="product-badge">New</div>
+                    <img src="${product.image}" alt="${product.name}" class="product-img">
+                    <div class="product-content">
+                        <h3 class="product-title">${product.name}</h3>
+                        <div class="product-price">$${product.price.toFixed(2)}</div>
+                        <div class="product-actions">
+                            <button class="btn" onclick="addToCart(${product.id})">Add to Cart</button>
+                            <button class="btn btn-outline" onclick="buyNow(${product.id})">Buy Now</button>
+                        </div>
+                    </div>
+                `;
+                productsContainer.appendChild(productCard);
+            });
+        }
+        
+        // Add to cart function
+        function addToCart(productId) {
+            const product = allProducts.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    image: product.image,
+                    quantity: 1
+                });
+            }
+            
+            saveCart();
+            updateCartUI();
+            showNotification();
+        }
+        
+        // Buy Now function
+        function buyNow(productId) {
+            addToCart(productId);
+            cartSidebar.classList.add('active');
+        }
+        
+        // Remove from cart
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            saveCart();
+            updateCartUI();
+        }
+        
+        // Update quantity
+        function updateQuantity(productId, change) {
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity < 1) {
+                    removeFromCart(productId);
+                    return;
+                }
+                saveCart();
+                updateCartUI();
+            }
+        }
+        
+        // Save cart to localStorage
+        function saveCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+        
+        // Update cart UI
+        function updateCartUI() {
+            // Update cart count
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            
+            // Update cart items
+            cartItemsContainer.innerHTML = '';
+            
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p>Your cart is empty</p>';
+                cartTotalPrice.textContent = '$0.00';
+                return;
+            }
+            
+            let totalPrice = 0;
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                totalPrice += itemTotal;
+                
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" class="cart-item-img">
+                    <div class="cart-item-details">
+                        <h4 class="cart-item-title">${item.name}</h4>
+                        <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+                        <div class="cart-item-actions">
+                            <button class="quantity-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+                            <input type="text" class="quantity-input" value="${item.quantity}" readonly>
+                            <button class="quantity-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                            <div class="remove-item" onclick="removeFromCart(${item.id})">
+                                <i class="fas fa-trash"></i>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                cartItemsContainer.appendChild(cartItem);
+            });
+            
+            cartTotalPrice.textContent = `$${totalPrice.toFixed(2)}`;
+        }
+        
+        // Show notification
+        function showNotification() {
+            notification.classList.add('active');
+            setTimeout(() => {
+                notification.classList.remove('active');
+            }, 3000);
+        }
+        
+        // Create flying cars animation
+        function createFlyingCars() {
+            const carIcons = ['🚗', '🚙', '🏎️', '🚕', '🚓'];
+            
+            for (let i = 0; i < 8; i++) {
+                const car = document.createElement('div');
+                car.className = 'flying-car';
+                car.textContent = carIcons[Math.floor(Math.random() * carIcons.length)];
+                car.style.setProperty('--y', Math.random());
+                car.style.left = '-100px';
+                car.style.top = `${Math.random() * 100}%`;
+                car.style.fontSize = `${Math.random() * 20 + 30}px`;
+                car.style.animationDuration = `${Math.random() * 20 + 15}s`;
+                car.style.animationDelay = `${Math.random() * 5}s`;
+                
+                flyingCars.appendChild(car);
+            }
+        }
+        
+        // Event Listeners
+        cartIcon.addEventListener('click', () => {
+            cartSidebar.classList.add('active');
+        });
+        
+        closeCart.addEventListener('click', () => {
+            cartSidebar.classList.remove('active');
+        });
+        
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+        
+        // Make functions available globally
+        window.addToCart = addToCart;
+        window.buyNow = buyNow;
+        window.updateQuantity = updateQuantity;
+        window.removeFromCart = removeFromCart;
+    </script>
+</body>
+</html>
